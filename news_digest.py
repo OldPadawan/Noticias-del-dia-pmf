@@ -53,21 +53,29 @@ def send_email(tech_summary, eco_summary):
     today = date.today().strftime("%d/%m/%Y")
     
     html = f"""
-    <html><body style="font-family: Arial, sans-serif; max-width: 650px; margin: auto;">
-        <h1 style="color: #1a1a2e;">📰 Digest Diario — {today}</h1>
-        
-        <h2 style="color: #16213e;">💻 Tecnología</h2>
-        <p style="white-space: pre-line;">{tech_summary}</p>
-        
-        <hr>
-        
-        <h2 style="color: #0f3460;">📈 Economía</h2>
-        <p style="white-space: pre-line;">{eco_summary}</p>
-        
-        <hr>
-        <p style="color: #888; font-size: 12px;">
-            Generado automáticamente con IA • {today}
-        </p>
+    <html><body style="font-family: Georgia, serif; max-width: 680px; margin: auto; background: #f9f9f9; padding: 20px;">
+        <div style="background: white; border-radius: 12px; padding: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+            <h1 style="color: #1a1a2e; border-bottom: 3px solid #e74c3c; padding-bottom: 10px;">
+                📰 Digest Diario — {today}
+            </h1>
+            
+            <h2 style="color: #2980b9; margin-top: 30px;">💻 Tecnología</h2>
+            <div style="line-height: 1.8; color: #333;">
+                {markdown.markdown(tech_summary)}
+            </div>
+            
+            <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
+            
+            <h2 style="color: #27ae60;">📈 Economía</h2>
+            <div style="line-height: 1.8; color: #333;">
+                {markdown.markdown(eco_summary)}
+            </div>
+            
+            <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
+            <p style="color: #aaa; font-size: 12px; text-align: center;">
+                Generado automáticamente con IA • {today}
+            </p>
+        </div>
     </body></html>
     """
     
